@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Fishguard → Warsash · 26. August</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDE8DC;
+  --card:#FBF8F1;
+  --ink:#1F2B25;
+  --ink-soft:#44534B;
+  --ink-faint:#66756C;
+  --green:#1D6B57;
+  --amber:#96650A;
+  --rule:rgba(31,43,37,.22);
+  --rule-soft:rgba(31,43,37,.12);
+  --disp:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17.5px;line-height:1.55;
+  font-optical-sizing:auto;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- etappen-navigation ---------- */
+.tripnav{border-bottom:1px solid var(--rule);background:var(--card)}
+.tripnav-inner{max-width:760px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap}
+.tripnav-brand{flex:none;font-family:var(--disp);font-weight:800;font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:15px 0}
+.tripnav ol{list-style:none;display:flex;flex-wrap:wrap;margin:0;padding:0;min-width:0}
+.tripnav ol a{display:flex;align-items:baseline;gap:9px;padding:14px 16px 12px;text-decoration:none;border-bottom:2px solid transparent;font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--ink-faint)}
+.tripnav ol a .d{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:500;opacity:.8}
+.tripnav ol a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+.tripnav ol a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--green)}
+.tripnav ol a[aria-current="page"] .d{color:var(--green);opacity:1}
+.tripnav ol a:focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
+@media (max-width:660px){
+  .tripnav-brand{padding:12px 0 0}
+  .tripnav ol{width:100%}
+  .tripnav ol li{flex:1 1 auto}
+  .tripnav ol a{padding:10px 0 9px;flex-direction:column;gap:2px}
+}
+
+/* ---------- vorherige etappe ---------- */
+.prevleg{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  margin:44px 0 0;padding:18px 20px;border:1.5px solid var(--ink);border-radius:3px;background:var(--card);
+  box-shadow:4px 4px 0 rgba(31,43,37,.14);text-decoration:none;color:var(--ink)}
+.prevleg:hover{background:var(--ink);color:#F3EFE5}
+.prevleg .k{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+.prevleg:hover .k,.prevleg:hover .go{color:#D9D4C6}
+.prevleg strong{display:block;font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.prevleg .go{font-family:var(--mono);font-size:12px;color:var(--green);white-space:nowrap}
+
+/* ---------- live status bar ---------- */
+.status{
+  position:sticky;top:0;z-index:20;
+  background:rgba(31,43,37,.97);color:#F3EFE5;
+}
+.status-inner{max-width:760px;margin:0 auto;padding:9px 20px 10px;display:flex;gap:12px;align-items:baseline}
+.status-clock{font-family:var(--mono);font-size:13px;color:#F0C24B;letter-spacing:.02em;flex:none;font-weight:500}
+.status-text{font-family:var(--mono);font-size:12.5px;color:#D9D4C6;line-height:1.35}
+.status-bar{height:3px;background:rgba(243,239,229,.2)}
+.status-bar span{display:block;height:3px;width:0;background:#F0C24B;transition:width .6s ease}
+
+/* ---------- hero ---------- */
+header{padding:44px 0 30px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500}
+h1{
+  font-family:var(--disp);font-weight:800;font-size:clamp(38px,11vw,74px);
+  line-height:.92;letter-spacing:-.03em;margin:14px 0 0;color:var(--ink);
+}
+h1 .arrow{color:var(--green);font-weight:500}
+.sub{font-size:19px;color:var(--ink-soft);margin:16px 0 0;max-width:44ch}
+.facts{display:flex;flex-wrap:wrap;gap:0;margin:26px 0 0;border-top:2px solid var(--ink)}
+.fact{flex:1 1 90px;padding:12px 14px 12px 0;border-bottom:1px solid var(--rule)}
+.fact dt{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+.fact dd{margin:5px 0 0;font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+
+/* ---------- overview map ---------- */
+.map-card{margin:34px 0 0;background:var(--card);border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;box-shadow:4px 4px 0 rgba(31,43,37,.14)}
+.map-card svg{display:block;width:100%;height:auto}
+.map-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);flex-wrap:wrap}
+.gm{color:var(--green);text-decoration:none;border-bottom:1.5px solid rgba(29,107,87,.5);font-weight:500}
+.gm:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ---------- section head ---------- */
+.shead{margin:56px 0 0;display:flex;align-items:baseline;gap:12px}
+.shead h2{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.13em;text-transform:uppercase;margin:0;color:var(--ink)}
+.shead .line{flex:1;height:2px;background:var(--ink)}
+
+/* ---------- driving leg (height = minutes) ---------- */
+.leg{display:flex;gap:14px;align-items:stretch}
+.leg-rail{width:16px;flex:none;display:flex;justify-content:center}
+.leg-rail i{width:2px;background:var(--green);display:block;border-radius:2px}
+.leg-body{padding:10px 0;font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);letter-spacing:.01em}
+.leg-body b{color:var(--ink);font-weight:500}
+
+/* ---------- stop ---------- */
+.stop{display:flex;gap:14px;align-items:flex-start}
+.stop-rail{width:16px;flex:none;display:flex;flex-direction:column;align-items:center;padding-top:6px}
+.dot{width:15px;height:15px;border-radius:50%;background:var(--green);border:2.5px solid var(--ink);flex:none}
+.dot.terminus{background:var(--paper)}
+.card{flex:1;min-width:0;background:var(--card);border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;box-shadow:4px 4px 0 rgba(31,43,37,.14)}
+.card-top{padding:16px 16px 15px}
+.time{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.04em;font-weight:500}
+.time em{font-style:normal;color:var(--ink-faint);font-weight:400}
+.card h3{font-family:var(--disp);font-weight:800;font-size:clamp(24px,6.4vw,31px);letter-spacing:-.025em;line-height:1.05;margin:7px 0 0;color:var(--ink)}
+.where{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin:8px 0 0;letter-spacing:.02em}
+.card p{margin:13px 0 0;color:var(--ink-soft)}
+.card p b{color:var(--ink);font-weight:500}
+
+.shots{display:grid;grid-template-columns:1fr;gap:2px;background:var(--ink);border-bottom:1.5px solid var(--ink)}
+.shots.two{grid-template-columns:1fr 1fr}
+.shot{position:relative;aspect-ratio:16/10;background:#DDD6C6;overflow:hidden}
+.shots.two .shot{aspect-ratio:4/3}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.shot cite{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 5px;font-family:var(--mono);font-style:normal;font-size:9.5px;color:#fff;
+  background:linear-gradient(to top,rgba(15,22,18,.75),transparent)}
+
+.facts2{display:flex;flex-wrap:wrap;gap:6px 22px;padding:14px 16px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+.facts2 span b{color:var(--ink);font-weight:500}
+.actions{display:flex;border-top:1px solid var(--rule)}
+.actions button,.actions a{
+  flex:1;appearance:none;border:0;background:transparent;color:var(--green);
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  padding:14px 8px;cursor:pointer;text-align:center;text-decoration:none;
+}
+.actions a{border-left:1px solid var(--rule)}
+.actions button:hover,.actions a:hover{background:var(--ink);color:#F3EFE5}
+.actions button:focus-visible,.actions a:focus-visible{outline:2.5px solid var(--amber);outline-offset:-3px}
+.minimap{height:0;overflow:hidden;transition:height .35s ease}
+.minimap.open{height:230px;border-top:1.5px solid var(--ink)}
+.minimap iframe{width:100%;height:230px;border:0;display:block}
+
+.tip{margin:14px 0 0;padding:12px 13px;border-left:3px solid var(--green);background:rgba(29,107,87,.09);font-size:16px;color:var(--ink-soft);border-radius:0 3px 3px 0}
+.tip b{color:var(--ink);font-weight:500}
+
+/* ---------- notes ---------- */
+.notes{margin:18px 0 0;border-top:2px solid var(--ink)}
+.note{padding:16px 0;border-bottom:1px solid var(--rule)}
+.note h4{font-family:var(--disp);font-weight:700;font-size:17.5px;letter-spacing:-.01em;margin:0 0 5px;color:var(--ink)}
+.note p{margin:0;color:var(--ink-soft);font-size:16.5px}
+footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-faint);line-height:1.7}
+
+@media (min-width:620px){
+  .stop{gap:20px}.leg{gap:20px}
+  .stop-rail,.leg-rail{width:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav class="tripnav" aria-label="Etappen">
+  <div class="tripnav-inner">
+    <a class="tripnav-brand" href="index.html">England · August 2026</a>
+    <ol>
+      <li><a href="index.html"><span class="d">Sa 22. Aug</span> Bristol → Fishguard</a></li>
+      <li><a href="fishguard-warsash.html" aria-current="page"><span class="d">Mi 26. Aug</span> Fishguard → Warsash</a></li>
+    </ol>
+  </div>
+</nav>
+
+<div class="status">
+  <div class="status-inner">
+    <div class="status-clock" id="clock">—:—</div>
+    <div class="status-text" id="statusText">Plan für Mittwoch, 26. August</div>
+  </div>
+  <div class="status-bar"><span id="statusFill"></span></div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Mittwoch, 26. August · Wales → Hampshire</div>
+  <h1>Fishguard <span class="arrow">→</span> Warsash</h1>
+  <p class="sub">Vier kurze Stopps, zwei Normannenburgen, eine Zehntscheune und ein Imbiss aus der Bäckerei. Abfahrt 8:30, Ankunft kurz vor 17:00.</p>
+  <dl class="facts">
+    <div class="fact"><dt>Strecke</dt><dd>445 km</dd></div>
+    <div class="fact"><dt>Fahrzeit</dt><dd>6 h 10</dd></div>
+    <div class="fact"><dt>Pausen</dt><dd>2 h 15</dd></div>
+    <div class="fact"><dt>Ankunft</dt><dd>16:55</dd></div>
+  </dl>
+</header>
+
+<!-- ============ ÜBERSICHTSKARTE ============ -->
+<div class="map-card">
+  <svg viewBox="0 0 800 470" role="img" aria-label="Übersichtskarte der Route von Fishguard nach Warsash mit vier Zwischenstopps">
+    <defs>
+      <pattern id="water" width="9" height="9" patternTransform="rotate(30)" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="#1D6B57" opacity=".3"/>
+      </pattern>
+    </defs>
+    <rect x="0" y="0" width="800" height="470" fill="#FBF8F1"/>
+    <!-- graticule -->
+    <g stroke="rgba(31,43,37,.14)" stroke-width="1">
+      <line x1="20" y1="111" x2="780" y2="111"/><line x1="20" y1="263" x2="780" y2="263"/><line x1="20" y1="415" x2="780" y2="415"/>
+      <line x1="196" y1="20" x2="196" y2="450"/><line x1="386" y1="20" x2="386" y2="450"/><line x1="576" y1="20" x2="576" y2="450"/>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#66756C">
+      <text x="24" y="107">51°45′ N</text><text x="24" y="259">51°15′ N</text><text x="24" y="411">50°45′ N</text>
+      <text x="200" y="444">4° W</text><text x="390" y="444">3° W</text><text x="580" y="444">2° W</text>
+    </g>
+    <!-- Bristol Channel / Severn -->
+    <path d="M 500,172 C 430,196 330,226 210,252 C 140,268 90,282 40,296 L 40,450 L 500,450 C 470,380 470,300 500,172 Z"
+          fill="url(#water)" stroke="rgba(29,107,87,.5)" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="140" y="335" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#1D6B57" letter-spacing="1.6" font-weight="500">BRISTOL CHANNEL</text>
+    <text x="413" y="198" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1D6B57" letter-spacing="1" transform="rotate(-22 413 198)">SEVERN</text>
+    <text x="120" y="80" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#66756C" letter-spacing="2.4">CYMRU · WALES</text>
+    <text x="620" y="330" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#66756C" letter-spacing="2.4">ENGLAND</text>
+
+    <!-- route -->
+    <path d="M 53,52 Q 110,86 180,130 Q 300,192 387,179 Q 455,168 490,159 Q 545,196 570,250 Q 640,300 751,399"
+          fill="none" stroke="#1D6B57" stroke-width="3" stroke-linecap="round"/>
+    <!-- leg labels -->
+    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#44534B">
+      <text x="112" y="76">1 h 30</text>
+      <text x="258" y="214">1 h 15</text>
+      <text x="426" y="150">45 min</text>
+      <text x="556" y="212">1 h 05</text>
+      <text x="644" y="344">1 h 35</text>
+    </g>
+    <!-- markers -->
+    <g>
+      <circle cx="53" cy="52" r="6.5" fill="#FBF8F1" stroke="#1F2B25" stroke-width="2.5"/>
+      <circle cx="180" cy="130" r="7" fill="#1D6B57" stroke="#1F2B25" stroke-width="2"/>
+      <circle cx="387" cy="179" r="7" fill="#1D6B57" stroke="#1F2B25" stroke-width="2"/>
+      <circle cx="490" cy="159" r="7" fill="#1D6B57" stroke="#1F2B25" stroke-width="2"/>
+      <circle cx="570" cy="250" r="7" fill="#1D6B57" stroke="#1F2B25" stroke-width="2"/>
+      <circle cx="751" cy="399" r="6.5" fill="#FBF8F1" stroke="#1F2B25" stroke-width="2.5"/>
+    </g>
+    <g font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="13.5" fill="#1F2B25">
+      <text x="66" y="44">Fishguard</text>
+      <text x="192" y="126">Kidwelly</text>
+      <text x="374" y="205" text-anchor="middle">Caerphilly</text>
+      <text x="502" y="150">Chepstow</text>
+      <text x="582" y="246">Bradford-on-Avon</text>
+      <text x="745" y="391" text-anchor="end">Warsash</text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#96650A" font-weight="500">
+      <text x="66" y="61">8:30 ab</text>
+      <text x="192" y="143">10:00</text>
+      <text x="374" y="222" text-anchor="middle">11:45</text>
+      <text x="502" y="167">13:15</text>
+      <text x="582" y="263">14:50</text>
+      <text x="745" y="416" text-anchor="end">16:55 an</text>
+    </g>
+  </svg>
+  <div class="map-foot">
+    <span>Schematisch · Fahrzeiten ohne Stau</span>
+    <a class="gm" href="https://www.google.com/maps/dir/?api=1&amp;origin=Fishguard,+Pembrokeshire&amp;destination=Warsash,+Southampton&amp;waypoints=Kidwelly+Castle|Caerphilly+Castle|Chepstow+Castle|Tithe+Barn+Bradford-on-Avon&amp;travelmode=driving" target="_blank" rel="noopener">Route in Google Maps →</a>
+  </div>
+</div>
+
+<!-- ============ ZEITPLAN ============ -->
+<div class="shead"><h2>Zeitplan</h2><div class="line"></div></div>
+
+<!-- START -->
+<div class="stop" style="margin-top:22px">
+  <div class="stop-rail"><span class="dot terminus"></span></div>
+  <div class="card">
+    <div class="card-top">
+      <div class="time">8:30 <em>Abfahrt</em></div>
+      <h3>Fishguard</h3>
+      <div class="where">A40 über St Clears und Carmarthen</div>
+      <p>Getankt losfahren – die A40 hat auf den ersten 40 km kaum Überholmöglichkeiten, und hinter jedem Traktor steht die ganze Kolonne.</p>
+    </div>
+  </div>
+</div>
+
+<div class="leg"><div class="leg-rail"><i style="height:81px"></i></div>
+  <div class="leg-body"><b>1 Std 30 · 95 km</b><br>A40 → Carmarthen → A484</div></div>
+
+<!-- 1 KIDWELLY -->
+<div class="stop">
+  <div class="stop-rail"><span class="dot"></span></div>
+  <div class="card">
+    <div class="shots">
+      <div class="shot">
+      <img alt="Kidwelly Castle" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kidwelly%20castle%20whole.JPG?width=1200">
+      <cite>Kidwelly Castle · Foto: Wikimedia Commons</cite>
+      </div>
+    </div>
+    <div class="card-top">
+      <div class="time">10:00 – 10:30 <em>· 30 Min</em></div>
+      <h3>Kidwelly Castle</h3>
+      <div class="where">Castle Rd, Kidwelly SA17 5BQ · 51.7395, −4.3057</div>
+      <p>Eine der besterhaltenen Burgen in Wales und trotzdem meist fast leer. Konzentrische Anlage über dem Fluss Gwendraeth: äußerer Ring, innerer Ring, dazwischen Türme, in die man hineinsteigen kann. Der <b>Rundgang auf den Wehrmauern</b> ist das Highlight – von oben siehst du die Mündung und die Salzwiesen. Nebenbei: Die allererste Einstellung von <b>Monty Python and the Holy Grail</b> wurde hier gedreht.</p>
+      <p class="tip"><b>In 30 Minuten:</b> durch das große Gatehouse, im inneren Hof links die Treppe hoch, einmal die Mauerkrone entlang, zurück. Reicht genau.</p>
+    </div>
+    <div class="facts2">
+      <span><b>9:30–17:00</b></span><span>Cadw · Eintritt</span><span>Parken kostenlos</span>
+    </div>
+    <div class="actions">
+      <button data-map="-4.3157,51.7335,-4.2957,51.7455,51.7395,-4.3057">Karte anzeigen</button>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=51.7395,-4.3057" target="_blank" rel="noopener">Navigation</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Kidwelly_Castle" target="_blank" rel="noopener">Fotos</a>
+    </div>
+    <div class="minimap"></div>
+  </div>
+</div>
+
+<div class="leg"><div class="leg-rail"><i style="height:68px"></i></div>
+  <div class="leg-body"><b>1 Std 15 · 95 km</b><br>A484 → M4 Ost → Ausfahrt 32</div></div>
+
+<!-- 2 CAERPHILLY -->
+<div class="stop">
+  <div class="stop-rail"><span class="dot"></span></div>
+  <div class="card">
+    <div class="shots">
+      <div class="shot">
+      <img alt="Caerphilly Castle" src="https://commons.wikimedia.org/wiki/Special:FilePath/Caerphilly%20aerial.jpg?width=1200">
+      <cite>Caerphilly Castle aus der Luft · Foto: Wikimedia Commons</cite>
+      </div>
+    </div>
+    <div class="card-top">
+      <div class="time">11:45 – 12:30 <em>· 45 Min · Mittagspause</em></div>
+      <h3>Caerphilly</h3>
+      <div class="where">Castle St, Caerphilly CF83 1JD · 51.5761, −3.2202</div>
+      <p>Die größte Burg von Wales und die erste Großbritanniens mit vollständig konzentrischer Anlage – der Graben ist ein künstlicher See. Berühmt ist der <b>schiefe Südostturm</b>, der stärker aus dem Lot steht als der Turm von Pisa.</p>
+      <p><b>Imbiss:</b> Glanmor's Bakery, 22 Cardiff Road – zwei Minuten von der Burg. Pies, Pasties, Sausage Rolls und Welsh Cakes zum Mitnehmen. Damit auf eine Bank am Wassergraben.</p>
+      <p class="tip"><b>Wichtig:</b> Der Weg <b>um</b> den Wassergraben ist kostenlos und liefert die beste Ansicht. Für das Innere brauchst du 1,5 Stunden – bei 45 Minuten lieber draußen bleiben.</p>
+    </div>
+    <div class="facts2">
+      <span>Burg <b>9:30–18:00</b></span><span>Bäckerei <b>7:00–16:00</b></span><span>Außenrundweg frei</span>
+    </div>
+    <div class="actions">
+      <button data-map="-3.2302,51.5701,-3.2102,51.5821,51.5761,-3.2202">Karte anzeigen</button>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=51.5761,-3.2202" target="_blank" rel="noopener">Navigation</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Caerphilly_Castle" target="_blank" rel="noopener">Fotos</a>
+    </div>
+    <div class="minimap"></div>
+  </div>
+</div>
+
+<div class="leg"><div class="leg-rail"><i style="height:41px"></i></div>
+  <div class="leg-body"><b>45 Min · 50 km</b><br>A470 → M4 Ost → M48, Severn-Brücke (mautfrei)</div></div>
+
+<!-- 3 CHEPSTOW -->
+<div class="stop">
+  <div class="stop-rail"><span class="dot"></span></div>
+  <div class="card">
+    <div class="shots">
+      <div class="shot">
+      <img alt="Chepstow Castle" src="https://commons.wikimedia.org/wiki/Special:FilePath/Chepstow%20Castle%20from%20Castle%20Dell%20Car%20Park%20-%20geograph.org.uk%20-%206429858.jpg?width=1200">
+      <cite>Chepstow Castle vom Castle Dell · Foto: Pam Brophy / Wikimedia Commons</cite>
+      </div>
+    </div>
+    <div class="card-top">
+      <div class="time">13:15 – 13:45 <em>· 30 Min</em></div>
+      <h3>Chepstow Castle</h3>
+      <div class="where">Bridge St, Chepstow NP16 5EY · 51.6442, −2.6744</div>
+      <p>Die älteste erhaltene Steinburg Großbritanniens, begonnen 1067 – ein Jahr nach Hastings. Sie zieht sich als schmales Band über 200 Meter auf einer Kalksteinklippe direkt über dem <b>Wye</b>, der hier die Grenze zwischen Wales und England bildet.</p>
+      <p class="tip"><b>In 30 Minuten:</b> nicht hinein, sondern über die alte gusseiserne Wye-Brücke gehen. Von dort hast du die komplette Burgflanke über der Klippe im Bild – kostenlos und fotografisch der beste Standpunkt. Bei Ebbe siehst du den enormen Tidenhub am Schlick.</p>
+    </div>
+    <div class="facts2">
+      <span><b>9:30–18:00</b></span><span>Cadw · Eintritt</span><span>Parkplatz am Tor</span>
+    </div>
+    <div class="actions">
+      <button data-map="-2.6844,51.6382,-2.6644,51.6502,51.6442,-2.6744">Karte anzeigen</button>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=51.6442,-2.6744" target="_blank" rel="noopener">Navigation</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Chepstow_Castle" target="_blank" rel="noopener">Fotos</a>
+    </div>
+    <div class="minimap"></div>
+  </div>
+</div>
+
+<div class="leg"><div class="leg-rail"><i style="height:59px"></i></div>
+  <div class="leg-body"><b>1 Std 05 · 75 km</b><br>M48 → M4 Ausfahrt 18 → A46 → Bath → A363</div></div>
+
+<!-- 4 BRADFORD-ON-AVON -->
+<div class="stop">
+  <div class="stop-rail"><span class="dot"></span></div>
+  <div class="card">
+    <div class="shots">
+      <div class="shot">
+      <img alt="Tithe Barn Bradford-on-Avon" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tithe%20Barn%20at%20Bradford%20on%20Avon.JPG?width=1200">
+      <cite>Tithe Barn, Bradford-on-Avon · Foto: Rod Ward / Wikimedia Commons</cite>
+      </div>
+    </div>
+    <div class="card-top">
+      <div class="time">14:50 – 15:20 <em>· 30 Min</em></div>
+      <h3>Bradford-on-Avon</h3>
+      <div class="where">Tithe Barn, Pound Lane BA15 1LF · 51.3427, −2.2552</div>
+      <p>Kleines Wollstädtchen ganz aus honigfarbenem Bath-Stein, an einen steilen Hang über den Avon gebaut. Direkt am Parkplatz steht die <b>Tithe Barn</b> aus den 1330er-Jahren: eine 51 Meter lange Zehntscheune der Abtei Shaftesbury mit einem Dachstuhl wie ein umgedrehtes Schiff – rund 100 Tonnen Steinplatten liegen auf 14 hölzernen Bögen. Eintritt frei.</p>
+      <p class="tip"><b>Rundgang:</b> Scheune, dann 100 Meter zum <b>Kennet-&amp;-Avon-Kanal</b> mit Hausbooten, zurück über die Flussbrücke mit der mittelalterlichen Kapelle darauf. Genau eine halbe Stunde.</p>
+    </div>
+    <div class="facts2">
+      <span>Scheune <b>10:30–16:00</b></span><span>Eintritt frei</span><span>Parken Pound Lane</span>
+    </div>
+    <div class="actions">
+      <button data-map="-2.2652,51.3367,-2.2452,51.3487,51.3427,-2.2552">Karte anzeigen</button>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=51.3427,-2.2552" target="_blank" rel="noopener">Navigation</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Tithe_Barn,_Bradford-on-Avon" target="_blank" rel="noopener">Fotos</a>
+    </div>
+    <div class="minimap"></div>
+  </div>
+</div>
+
+<div class="leg"><div class="leg-rail"><i style="height:86px"></i></div>
+  <div class="leg-body"><b>1 Std 35 · 130 km</b><br>A363 → A36 Warminster, Salisbury → M27 → Warsash</div></div>
+
+<!-- ZIEL -->
+<div class="stop">
+  <div class="stop-rail"><span class="dot terminus"></span></div>
+  <div class="card">
+    <div class="card-top">
+      <div class="time">16:55 <em>Ankunft</em></div>
+      <h3>Warsash</h3>
+      <div class="where">Ferienwohnung · bei Southampton</div>
+      <p>Die A36 hinter Salisbury und die M27 werden ab etwa 16:30 dicht. Wenn ihr in Bradford-on-Avon 20 Minuten früher losfahrt, spart das am Ende oft eine halbe Stunde.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ALTERNATIVEN & HINWEISE ============ -->
+<div class="shead"><h2>Stellschrauben</h2><div class="line"></div></div>
+<div class="notes">
+  <div class="note">
+    <h4>Eine Stunde früher ankommen</h4>
+    <p>Chepstow weglassen und direkt über die M4 weiterfahren: Ankunft gegen 16:15. Die Burg ist der am wenigsten notwendige der vier Stopps, weil ihr sie ohnehin nur von außen seht.</p>
+  </div>
+  <div class="note">
+    <h4>Old Sarum statt Bradford-on-Avon</h4>
+    <p>Die Wallanlage der aufgegebenen Vorgängerstadt von Salisbury, mit weitem Blick über die Ebene bis zur Kathedralenspitze. Gleiche Ankunftszeit, aber die letzte Etappe schrumpft von 1½ Stunden auf 50 Minuten – die Pause liegt dann dort, wo sie am meisten hilft. Geöffnet 10:00–17:00.</p>
+  </div>
+  <div class="note">
+    <h4>Cadw-Eintritte</h4>
+    <p>Kidwelly, Caerphilly und Chepstow gehören alle Cadw. Wenn ihr in mehr als eine Burg wirklich hineingehen wollt, lohnt der 3-Tage-Explorer-Pass schnell. Für den Plan oben reicht ein Einzelticket in Kidwelly.</p>
+  </div>
+  <div class="note">
+    <h4>Unterwegs</h4>
+    <p>Die Severn-Brücke ist seit 2018 mautfrei. Tanken in Wales vor der Brücke, danach wird es teurer. Die A40 zwischen Fishguard und Carmarthen ist einspurig – die erste Etappe nicht zu knapp kalkulieren.</p>
+  </div>
+</div>
+
+<a class="prevleg" href="index.html">
+  <span>
+    <span class="k">Erste Etappe · Samstag, 22. August</span>
+    <strong>Bristol → Fishguard</strong>
+  </span>
+  <span class="go">← Der Teifi-Bogen</span>
+</a>
+
+<footer>
+  Fahrzeiten ohne Stau, Öffnungszeiten Stand 25. August 2026 – vor Ort kann abweichen.<br>
+  Fotos: Wikimedia Commons (CC BY-SA). Bilder werden beim Öffnen geladen – dafür einmal Internet nötig.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // Detailkarten bei Bedarf laden
+  document.querySelectorAll('.actions button[data-map]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var box = btn.closest('.card').querySelector('.minimap');
+      if (box.classList.contains('open')){
+        box.classList.remove('open'); btn.textContent = 'Karte anzeigen'; return;
+      }
+      if (!box.dataset.loaded){
+        var p = btn.dataset.map.split(',');
+        var f = document.createElement('iframe');
+        f.loading = 'lazy';
+        f.title = 'Detailkarte';
+        f.src = 'https://www.openstreetmap.org/export/embed.html?bbox=' +
+                p[0]+','+p[1]+','+p[2]+','+p[3] + '&layer=mapnik&marker=' + p[4]+','+p[5];
+        box.appendChild(f);
+        box.dataset.loaded = '1';
+      }
+      box.classList.add('open');
+      btn.textContent = 'Karte ausblenden';
+    });
+  });
+
+  // Livestatus für den Reisetag
+  var plan = [
+    {t:'08:30', s:'Abfahrt Fishguard'},
+    {t:'10:00', s:'Kidwelly Castle'},
+    {t:'10:30', s:'Fahrt nach Caerphilly'},
+    {t:'11:45', s:'Caerphilly · Mittagspause'},
+    {t:'12:30', s:'Fahrt nach Chepstow'},
+    {t:'13:15', s:'Chepstow Castle'},
+    {t:'13:45', s:'Fahrt nach Bradford-on-Avon'},
+    {t:'14:50', s:'Bradford-on-Avon'},
+    {t:'15:20', s:'Fahrt nach Warsash'}
+  ];
+  var clock = document.getElementById('clock'),
+      text  = document.getElementById('statusText'),
+      fill  = document.getElementById('statusFill');
+
+  function mins(hhmm){ var a = hhmm.split(':'); return (+a[0])*60 + (+a[1]); }
+
+  function tick(){
+    var now = new Date();
+    clock.textContent = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+
+    var isDay = (now.getFullYear() === 2026 && now.getMonth() === 7 && now.getDate() === 26);
+    if (!isDay){
+      text.textContent = 'Reisetag: Mittwoch, 26. August · Abfahrt 8:30';
+      fill.style.width = '0%';
+      return;
+    }
+    var m = now.getHours()*60 + now.getMinutes(), start = mins('08:30'), end = mins('16:55');
+    if (m < start){ text.textContent = 'Abfahrt in ' + (start - m) + ' Min'; fill.style.width = '0%'; return; }
+    if (m >= end){ text.textContent = 'Angekommen – schöne Woche in Warsash'; fill.style.width = '100%'; return; }
+    var label = plan[0].s;
+    for (var i = 0; i < plan.length; i++){ if (m >= mins(plan[i].t)) label = plan[i].s; }
+    var left = end - m;
+    text.textContent = 'Jetzt: ' + label + ' · ' + Math.floor(left/60) + ' Std ' + (left%60) + ' Min bis Warsash';
+    fill.style.width = Math.round((m - start) / (end - start) * 100) + '%';
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>
