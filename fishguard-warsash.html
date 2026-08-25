@@ -28,7 +28,7 @@ html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:var(--body);font-size:17.5px;line-height:1.55;
-  font-optical-sizing:auto;
+  font-optical-sizing:auto;overflow-x:hidden;
 }
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
 
@@ -50,15 +50,15 @@ body{
   .tripnav ol a{padding:10px 0 9px;flex-direction:column;gap:2px}
 }
 
-/* ---------- vorherige etappe ---------- */
-.prevleg{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+/* ---------- etappen-wechsel ---------- */
+.legnav{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
   margin:44px 0 0;padding:18px 20px;border:1.5px solid var(--ink);border-radius:3px;background:var(--card);
   box-shadow:4px 4px 0 rgba(31,43,37,.14);text-decoration:none;color:var(--ink)}
-.prevleg:hover{background:var(--ink);color:#F3EFE5}
-.prevleg .k{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
-.prevleg:hover .k,.prevleg:hover .go{color:#D9D4C6}
-.prevleg strong{display:block;font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.02em}
-.prevleg .go{font-family:var(--mono);font-size:12px;color:var(--green);white-space:nowrap}
+.legnav:hover{background:var(--ink);color:#F3EFE5}
+.legnav .k{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+.legnav:hover .k,.legnav:hover .go{color:#D9D4C6}
+.legnav strong{display:block;font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.legnav .go{font-family:var(--mono);font-size:12px;color:var(--green);white-space:nowrap}
 
 /* ---------- live status bar ---------- */
 .status{
@@ -91,11 +91,24 @@ h1 .arrow{color:var(--green);font-weight:500}
 .map-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);flex-wrap:wrap}
 .gm{color:var(--green);text-decoration:none;border-bottom:1.5px solid rgba(29,107,87,.5);font-weight:500}
 .gm:hover{color:var(--ink);border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.wide{width:min(calc(100vw - 48px),1000px);position:relative;left:50%;transform:translateX(-50%)}
+
+/* karten-typografie */
+.mlabel{font-family:var(--disp);font-weight:700;font-size:var(--fl,13px);fill:var(--ink)}
+.mtime{font-family:var(--mono);font-weight:500;font-size:var(--ft,11.5px);fill:var(--amber)}
+.mminor{font-family:var(--mono);font-size:var(--fm,11.5px);fill:var(--ink-faint)}
+.mroad{font-family:var(--mono);font-size:var(--fr,10.5px);fill:var(--ink-faint);letter-spacing:.06em}
+.marea{font-family:var(--mono);font-size:10.5px;fill:var(--ink-faint);letter-spacing:.22em}
+.mwater{font-family:var(--mono);font-size:11.5px;fill:var(--green);letter-spacing:.14em;font-weight:500}
 
 /* ---------- section head ---------- */
 .shead{margin:56px 0 0;display:flex;align-items:baseline;gap:12px}
 .shead h2{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.13em;text-transform:uppercase;margin:0;color:var(--ink)}
 .shead .line{flex:1;height:2px;background:var(--ink)}
+.lead{margin:14px 0 0;color:var(--ink-soft);max-width:62ch}
 
 /* ---------- driving leg (height = minutes) ---------- */
 .leg{display:flex;gap:14px;align-items:stretch}
@@ -144,10 +157,22 @@ h1 .arrow{color:var(--green);font-weight:500}
 
 .tip{margin:14px 0 0;padding:12px 13px;border-left:3px solid var(--green);background:rgba(29,107,87,.09);font-size:16px;color:var(--ink-soft);border-radius:0 3px 3px 0}
 .tip b{color:var(--ink);font-weight:500}
+.tip.warn{border-left-color:var(--amber);background:rgba(150,101,10,.1)}
+
+.detail{list-style:none;margin:16px 0 0;padding:0}
+.detail li{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--rule-soft)}
+.detail li:last-child{border-bottom:0;padding-bottom:0}
+.detail .k{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint)}
+.detail .v{color:var(--ink-soft);font-size:16.5px}
+.detail .warn .k{color:var(--amber)}
+@media (max-width:600px){
+  .detail li{grid-template-columns:1fr;gap:2px}
+}
 
 /* ---------- notes ---------- */
 .notes{margin:18px 0 0;border-top:2px solid var(--ink)}
 .note{padding:16px 0;border-bottom:1px solid var(--rule)}
+.note .tag{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;font-weight:500}
 .note h4{font-family:var(--disp);font-weight:700;font-size:17.5px;letter-spacing:-.01em;margin:0 0 5px;color:var(--ink)}
 .note p{margin:0;color:var(--ink-soft);font-size:16.5px}
 footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-faint);line-height:1.7}
@@ -196,7 +221,7 @@ footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-fa
 </header>
 
 <!-- ============ ÜBERSICHTSKARTE ============ -->
-<div class="map-card">
+<div class="map-card wide">
   <svg viewBox="0 0 800 470" role="img" aria-label="Übersichtskarte der Route von Fishguard nach Warsash mit vier Zwischenstopps">
     <defs>
       <pattern id="water" width="9" height="9" patternTransform="rotate(30)" patternUnits="userSpaceOnUse">
@@ -209,24 +234,24 @@ footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-fa
       <line x1="20" y1="111" x2="780" y2="111"/><line x1="20" y1="263" x2="780" y2="263"/><line x1="20" y1="415" x2="780" y2="415"/>
       <line x1="196" y1="20" x2="196" y2="450"/><line x1="386" y1="20" x2="386" y2="450"/><line x1="576" y1="20" x2="576" y2="450"/>
     </g>
-    <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#66756C">
+    <g class="mminor" style="--fm:8px">
       <text x="24" y="107">51°45′ N</text><text x="24" y="259">51°15′ N</text><text x="24" y="411">50°45′ N</text>
       <text x="200" y="444">4° W</text><text x="390" y="444">3° W</text><text x="580" y="444">2° W</text>
     </g>
     <!-- Bristol Channel / Severn -->
     <path d="M 500,172 C 430,196 330,226 210,252 C 140,268 90,282 40,296 L 40,450 L 500,450 C 470,380 470,300 500,172 Z"
           fill="url(#water)" stroke="rgba(29,107,87,.5)" stroke-width="1" stroke-dasharray="3 4"/>
-    <text x="140" y="335" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#1D6B57" letter-spacing="1.6" font-weight="500">BRISTOL CHANNEL</text>
-    <text x="413" y="198" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#1D6B57" letter-spacing="1" transform="rotate(-22 413 198)">SEVERN</text>
-    <text x="120" y="80" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#66756C" letter-spacing="2.4">CYMRU · WALES</text>
-    <text x="620" y="330" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#66756C" letter-spacing="2.4">ENGLAND</text>
+    <text class="mwater" x="140" y="335" style="font-size:9.5px">BRISTOL CHANNEL</text>
+    <text class="mwater" x="413" y="198" style="font-size:8px;letter-spacing:.1em" transform="rotate(-22 413 198)">SEVERN</text>
+    <text class="marea" x="120" y="80" style="font-size:8.5px">CYMRU · WALES</text>
+    <text class="marea" x="620" y="362" style="font-size:8.5px">ENGLAND</text>
 
     <!-- route -->
     <path d="M 53,52 Q 110,86 180,130 Q 300,192 387,179 Q 455,168 490,159 Q 545,196 570,250 Q 640,300 751,399"
           fill="none" stroke="#1D6B57" stroke-width="3" stroke-linecap="round"/>
     <!-- leg labels -->
-    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#44534B">
-      <text x="112" y="76">1 h 30</text>
+    <g class="mroad" style="--fr:8.5px">
+      <text x="72" y="106">1 h 30</text>
       <text x="258" y="214">1 h 15</text>
       <text x="426" y="150">45 min</text>
       <text x="556" y="212">1 h 05</text>
@@ -241,21 +266,21 @@ footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-fa
       <circle cx="570" cy="250" r="7" fill="#1D6B57" stroke="#1F2B25" stroke-width="2"/>
       <circle cx="751" cy="399" r="6.5" fill="#FBF8F1" stroke="#1F2B25" stroke-width="2.5"/>
     </g>
-    <g font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="13.5" fill="#1F2B25">
+    <g class="mlabel" style="--fl:10.5px">
       <text x="66" y="44">Fishguard</text>
-      <text x="192" y="126">Kidwelly</text>
+      <text x="196" y="116">Kidwelly</text>
       <text x="374" y="205" text-anchor="middle">Caerphilly</text>
       <text x="502" y="150">Chepstow</text>
-      <text x="582" y="246">Bradford-on-Avon</text>
-      <text x="745" y="391" text-anchor="end">Warsash</text>
+      <text x="586" y="238">Bradford-on-Avon</text>
+      <text x="740" y="428" text-anchor="end">Warsash</text>
     </g>
-    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#96650A" font-weight="500">
+    <g class="mtime" style="--ft:8.5px">
       <text x="66" y="61">8:30 ab</text>
-      <text x="192" y="143">10:00</text>
+      <text x="196" y="130">10:00</text>
       <text x="374" y="222" text-anchor="middle">11:45</text>
       <text x="502" y="167">13:15</text>
-      <text x="582" y="263">14:50</text>
-      <text x="745" y="416" text-anchor="end">16:55 an</text>
+      <text x="586" y="252">14:50</text>
+      <text x="740" y="444" text-anchor="end">16:55 an</text>
     </g>
   </svg>
   <div class="map-foot">
@@ -429,24 +454,28 @@ footer{margin:44px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-fa
 <div class="shead"><h2>Stellschrauben</h2><div class="line"></div></div>
 <div class="notes">
   <div class="note">
+    <span class="tag">Zeit sparen</span>
     <h4>Eine Stunde früher ankommen</h4>
     <p>Chepstow weglassen und direkt über die M4 weiterfahren: Ankunft gegen 16:15. Die Burg ist der am wenigsten notwendige der vier Stopps, weil ihr sie ohnehin nur von außen seht.</p>
   </div>
   <div class="note">
+    <span class="tag">Alternative</span>
     <h4>Old Sarum statt Bradford-on-Avon</h4>
     <p>Die Wallanlage der aufgegebenen Vorgängerstadt von Salisbury, mit weitem Blick über die Ebene bis zur Kathedralenspitze. Gleiche Ankunftszeit, aber die letzte Etappe schrumpft von 1½ Stunden auf 50 Minuten – die Pause liegt dann dort, wo sie am meisten hilft. Geöffnet 10:00–17:00.</p>
   </div>
   <div class="note">
+    <span class="tag">Tickets</span>
     <h4>Cadw-Eintritte</h4>
     <p>Kidwelly, Caerphilly und Chepstow gehören alle Cadw. Wenn ihr in mehr als eine Burg wirklich hineingehen wollt, lohnt der 3-Tage-Explorer-Pass schnell. Für den Plan oben reicht ein Einzelticket in Kidwelly.</p>
   </div>
   <div class="note">
+    <span class="tag">Tanken &amp; Maut</span>
     <h4>Unterwegs</h4>
     <p>Die Severn-Brücke ist seit 2018 mautfrei. Tanken in Wales vor der Brücke, danach wird es teurer. Die A40 zwischen Fishguard und Carmarthen ist einspurig – die erste Etappe nicht zu knapp kalkulieren.</p>
   </div>
 </div>
 
-<a class="prevleg" href="index.html">
+<a class="legnav" href="index.html">
   <span>
     <span class="k">Erste Etappe · Samstag, 22. August</span>
     <strong>Bristol → Fishguard</strong>
